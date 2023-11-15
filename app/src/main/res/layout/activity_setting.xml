@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F5F6F7"
+    android:orientation="vertical">
+
+    <include layout="@layout/layout_comment_toolbar" />
+
+    <RelativeLayout
+        android:id="@+id/rl_clear"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_56"
+        android:layout_marginTop="@dimen/dp_8"
+        android:background="@color/white"
+        android:paddingStart="@dimen/dp_16"
+        android:paddingEnd="@dimen/dp_16">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="@string/清除缓存"
+            android:textColor="@color/color_ff171b20"
+            android:textSize="@dimen/sp_16" />
+
+        <TextView
+            android:id="@+id/tv_cache"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="@dimen/dp_5"
+            android:drawableEnd="@mipmap/ic_arrow_right_grey"
+            android:textColor="@color/color_ff808a96"
+            android:textSize="@dimen/sp_14"
+            tools:text="298M" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tv_logOut"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_56"
+        android:layout_marginTop="@dimen/dp_56"
+        android:background="@color/white_bg"
+        android:gravity="center"
+        android:text="@string/退出登录"
+        android:textColor="@color/color_ffff647c"
+        android:textSize="@dimen/sp_16" />
+</LinearLayout>

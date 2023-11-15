@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white_bg"
+    android:gravity="center_vertical"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tv_countryTitle"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_40"
+        android:background="@color/color_EBECEF"
+        android:gravity="center_vertical"
+        android:paddingStart="16dp"
+        android:textColor="#808A96"
+        android:textSize="16sp" />
+
+    <RelativeLayout
+        android:id="@+id/rl_country"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/dp_16"
+        android:paddingEnd="@dimen/dp_33">
+
+        <TextView
+            android:id="@+id/tv_countryName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:singleLine="true"
+            android:textColor="@color/color_171B20"
+            android:textSize="@dimen/sp_14" />
+
+        <TextView
+            android:id="@+id/tv_countryCode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/tv_countryName"
+            android:singleLine="true"
+            android:textColor="@color/black"
+            android:textSize="@dimen/sp_13" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_05"
+        android:background="@color/color_EBECEF" />
+</LinearLayout>

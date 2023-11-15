@@ -1,0 +1,524 @@
+//打包命令 gradlew assembleChannelsRelease
+//测试打包命令 gradlew assembleTestChannelsDebug
+import java.util.zip.ZipEntry
+import java.util.zip.ZipOutputStream
+
+/** * 删除 文件夹 所有文件 */
+def deleteFile(File file) {
+    if (file.isDirectory()) {
+        File[] files = file.listFiles()
+        for (int i = 0; i < files.length; i++) {
+            File f = files[i]
+            deleteFile(f)
+        }
+        println 'deleteFile: ' + file
+        file.delete()
+    } else if (file.exists()) {
+        println 'deleteFile: ' + file
+        file.delete()
+    }
+}
+
+/** * 返回标记 apk 文件夹里 apk 路径 - 用于手动上传 apk 加固与打渠道包 */
+def createTagApkDir() {
+    println 'createTagApkDir called...'
+    File tagApkFile
+    File tagApkDir = new File("${rootProject.projectDir}", TAG_APK_DIR)
+    if (!tagApkDir.exists()) {
+        println "tagApkDir not create"
+    }
+    File[] files = tagApkDir.listFiles()
+    if (files != null) {
+        for (File file : files) {
+            if (file.name.endsWith(".apk")) {
+                tagApkFile = file
+                println 'tagApkFile:' + tagApkFile
+                break
+            }
+        }
+    }
+    return tagApkFile
+}
+
+/** * 1，创建 项目名/build/outputs/apk/channels 文件夹 */
+def createChannelDir() {
+    println 'createChannelDir called...'
+    File outPathChanelDir = new File("${rootProject.projectDir}", JIAGU360_OUTPUT_PATH)
+    deleteFile(outPathChanelDir)
+    if (!outPathChanelDir.mkdirs()) {
+        println 'createChannelDir task: make apkOutputDir failure!'
+    }
+    return outPathChanelDir
+}
+
+/** * 2，将mapping文件拷贝到 channel 文件夹 */
+def backupMappingFile() {
+    copy {
+        println 'createChannelDir copy called...'
+        from "${rootProject.projectDir}/app/build/outputs/mapping/release/mapping.txt"
+        into "${rootProject.projectDir}/app/build/outputs/apk/channel"
+    }
+}
+
+/** * 3，找到指定环境 APK 包 */
+def findBuildTypeApk(String channel) {
+    String channelStr = "/app/build/outputs/apk/release"
+    if (!channel.equals("")) {
+        channelStr = "/app/build/outputs/apk/" + channel + "/release"
+    }
+    def filePaht = "${rootProject.rootDir}" + channelStr
+
+    println(filePaht)
+    def appBuildOutPut = new File(filePaht)
+
+    def buildTypeApkFile = null
+    appBuildOutPut.eachFile {
+        if (it.name.endsWith(".apk") && it.name.contains("release")) {
+            println(it)
+            buildTypeApkFile = it
+        }
+    }
+    return buildTypeApkFile
+}
+
+
+/** * 4，将新生成的 release apk 文件拷贝到 channel/release 文件夹 */
+def backupBuildTypeApkFile(File outPathChanelDir, File apkFile) {
+    File sourceFile = new File(outPathChanelDir, JIAGU360_FIND_APK_NAME)
+    if (!sourceFile.mkdirs()) {
+        println 'backupBuildTypeApkFile : make channel/release dir failure!'
+    }
+    copy {
+        println 'backupBuildTypeApkFile copy called...'
+        from apkFile.getPath()
+        into sourceFile.getPath()
+    }
+}
+
+/** * 5，创建渠道包文件夹 (工程名_版本号) 在 channel 目录下 */
+def createProjectVersionDir(File outPathChanelDir, File buildTypeApkFile) {
+    println 'createProjectVersionDir called...'
+    File apkOutputDir
+    if (buildTypeApkFile != null) {
+        println("+======================"+buildTypeApkFile.name)
+        String[] nameSlice = buildTypeApkFile.name.split(JIAGU360_APK_SPLIT)
+        String projectName = nameSlice[0]
+        String projectVersion = nameSlice[1]
+        //去掉后缀
+        String filePathe = (projectName + JIAGU360_APK_SPLIT + projectVersion).replace(".apk", "")
+        apkOutputDir = new File(outPathChanelDir, filePathe)
+        if (!apkOutputDir.mkdirs()) {
+            println 'createProjectVersionDir: make outputDir failure!'
+        }
+        println 'createProjectVersionDir apkOutputDir:' + apkOutputDir.getPath()
+    }
+    return apkOutputDir
+}
+
+/** * 6，删除360加固渠道旧数据 */
+def delete360ChannelDb() {
+    def db = new File(JIAGU360_DB) // jiagu.db中缓存了多渠道信息，如果不删除会合并到当前多渠道配置
+    if (db.exists()) {
+        if (!db.delete()) {
+            throw new RuntimeException("delete jiagu.db failure!")
+        }
+    }
+}
+
+/** * 7，加固和打渠道包 */
+def jiaGuChannel(File buildTypeApkFile, File apkOutputDir) {
+    println 'jiaGuChannel called...'
+    if (buildTypeApkFile != null && apkOutputDir != null) {
+        String apkPath = buildTypeApkFile.getPath()
+        String outPath = apkOutputDir.getPath()
+
+        String ketPath = new File("${rootProject.projectDir}", KEYSTORE_DIR).toPath()
+        String channelPath = new File("${rootProject.projectDir}", JIAGU360_CHANNEL_PATH).toPath()
+        String JIAGU360_JAR = "${project.rootDir}/360jiagu/jiagu/jiagu.jar"
+        println "*************** reinforce ***************"
+        println "***************"
+        println "***************"
+        println ""
+        println "JIAGU360_JAR: " + JIAGU360_JAR
+        println "JIAGU360_USER_NAME: " + JIAGU360_USER_NAME
+        println "JIAGU360_PASSWORD: " + JIAGU360_PASSWORD
+        println "ketPath: " + ketPath
+        println "KEYSTORE_PASSWORD: " + KEYSTORE_PASSWORD
+        println "ALIAS: " + ALIAS
+        println "ALIAS_PASSWORD: " + ALIAS_PASSWORD
+        println "channelPath: " + channelPath
+        println "apkPath: " + apkPath
+        println "outPath: " + outPath
+        println ""
+        println "***************"
+        println "***************"
+        println "*************** reinforce ***************"
+
+        //  加固 渠道包 v2签名 脚本
+        javaexec {
+            main = "-jar"
+            args = [JIAGU360_JAR, "-version"]
+        }
+        javaexec {
+            main = "-jar"
+            args = [JIAGU360_JAR, "-login", JIAGU360_USER_NAME, JIAGU360_PASSWORD]
+        }
+        javaexec {
+            main = "-jar"
+            args = [JIAGU360_JAR, "-importsign", ketPath, KEYSTORE_PASSWORD, ALIAS, ALIAS_PASSWORD]
+        }
+        javaexec {
+            main = "-jar"
+            args = [JIAGU360_JAR, "-showsign"]
+        }
+        javaexec {
+            main = "-jar"
+            args = [JIAGU360_JAR, "-deletemulpkg"]
+        }
+        javaexec {
+            main = "-jar"
+            args = [JIAGU360_JAR, "-importmulpkg", channelPath]
+        }
+        javaexec {
+            main = "-jar"
+            args = [JIAGU360_JAR, "-showmulpkg"]
+        }
+        javaexec {
+            main = "-jar"
+            args = [JIAGU360_JAR, "-jiagu", apkPath, outPath, "-autosign", "-automulpkg"]
+        }
+    }
+}
+
+/** * 8，删除未签名加固包，临时文件等 */
+def filterApk(File apkOutputDir) {
+    println "*************** filter apk ***************"
+    if (apkOutputDir != null) {
+        File[] files = apkOutputDir.listFiles()
+        for (int i = 0; i < files.length; i++) {
+            File file = files[i]
+            String fileName = file.getName()
+
+            if (fileName.endsWith("jiagu_sign.apk") || fileName.endsWith("_stemp.apk")
+                    || !fileName.endsWith("_sign.apk")) {
+                println "*************** filter apk delete: ***************" + file
+                file.delete()
+            }
+        }
+    }
+}
+
+/** * 9，修改渠道包名字 */
+def renameChannelApk(File apkOutputDir) {
+    println "*************** rename apk ***************"
+    if (apkOutputDir != null) {
+        File[] files = apkOutputDir.listFiles()
+        for (int i = 0; i < files.length; i++) {
+            File file = files[i]
+            String fileName = file.getName()
+
+            String[] prefixArr = fileName.split(JIAGU360_APK_SPLIT)
+            String[] suffixArr = fileName.split(JIAGU360_APK_SPLIT)
+
+            String rename = prefixArr[0] + JIAGU360_APK_SPLIT + prefixArr[1] +
+                    JIAGU360_APK_SPLIT + suffixArr[suffixArr.length - 2] + ".apk"
+            file.renameTo(file.getParent() + "/" + rename)
+            println "rename apk: " + fileName + " --> " + rename
+        }
+    }
+}
+
+/** * 10，将渠道包打成zip文件 */
+def compressDir(File apkOutputDir) {
+    println "*************** compress apk output dir ***************"
+    if (apkOutputDir != null) {
+        File zipFile = new File(apkOutputDir.getParent() + "/" + apkOutputDir.getName() + ".zip")
+        if (zipFile.exists()) {
+            zipFile.delete()
+        }
+        ZipOutputStream zos = new ZipOutputStream(new FileOutputStream(zipFile))
+        File[] files = apkOutputDir.listFiles()
+        for (int i = 0; i < files.length; i++) {
+            File file = files[i]
+
+            byte[] bf = new byte[8192]
+            FileInputStream fis = new FileInputStream(file)
+            zos.putNextEntry(new ZipEntry(file.getName()))
+
+            int len
+            while ((len = fis.read(bf)) > 0) {
+                zos.write(bf, 0, len)
+            }
+            zos.flush()
+            fis.close()
+        }
+        zos.close()
+    }
+}
+
+/** 11，删除 release 文件夹文件 清空老数据 */
+def delReleaseDirFile() {
+    println 'delReleaseDirFile called...'
+    File apkDir = new File("${rootProject.projectDir}", APK_DIR)
+    println "findBuildTypeApk apkDir: " + apkDir
+    if (!apkDir.exists()) {
+        println "build/outputs/apk not create"
+    }
+    File releaseFile = new File(apkDir, JIAGU360_FIND_APK_NAME)
+    println "releaseFile====" + releaseFile
+    if (!releaseFile.exists()) {
+        println "build/outputs/apk/release not create"
+    }
+    deleteFile(releaseFile)
+}
+
+/** 删除 release 文件夹文件 清空老数据 */
+task delSourceReleaseDir {
+    doLast {
+        println "*************** delSourceReleaseDir task running ***************"
+        delReleaseDirFile()
+    }
+}
+
+/** 指定一个 apk 路径加固与打渠道包 - TAG_APK_DIR */
+task tagChannelsRelease {
+    doLast {
+        println "*************** tagChannelsRelease begin... ***************"
+        File outPathChanelDir = createChannelDir()
+        backupMappingFile()
+        File buildTypeApkFile = createTagApkDir()
+        File apkOutputDir = createProjectVersionDir(outPathChanelDir, buildTypeApkFile)
+        delete360ChannelDb()
+        jiaGuChannel(buildTypeApkFile, apkOutputDir)
+        filterApk(apkOutputDir)
+        renameChannelApk(apkOutputDir)
+        File mainChannelDir = createBackUpDir()
+        backupMainApk(apkOutputDir, mainChannelDir)
+//        compressDir(apkOutputDir)
+        println "*************** tagChannelsRelease finish... ***************"
+    }
+}
+
+/** 执行加固与打渠道包, 没有 assembleRelease */
+task channelsRelease {
+    doLast {
+        println "*************** channelsRelease begin... ***************"
+        File outPathChanelDir = createChannelDir()
+        backupMappingFile()
+        File buildTypeApkFile = findBuildTypeApk("")
+        File apkOutputDir = createProjectVersionDir(outPathChanelDir, buildTypeApkFile)
+        delete360ChannelDb()
+        jiaGuChannel(buildTypeApkFile, apkOutputDir)
+        filterApk(apkOutputDir)
+        renameChannelApk(apkOutputDir)
+        File mainChannelDir = createBackUpDir()
+        backupMainApk(apkOutputDir, mainChannelDir)
+//        compressDir(apkOutputDir)
+        println "*************** channelsRelease finish... ***************"
+    }
+}
+
+/** 给测试打包 */
+task assembleTestChannelsRelease {
+    dependsOn("assembleRelease")
+    doLast {
+        File outPathChanelDir = createChannelDir()
+        backupMappingFile()
+        File buildTypeApkFile = findBuildTypeApk("")
+        backupBuildTypeApkFile(outPathChanelDir, buildTypeApkFile)
+        delReleaseDirFile()
+        println "*************** assembleTestChannelsRelease doLast finish... ***************"
+    }
+}
+
+task assembleTestChannelsDebug {
+    dependsOn("assembleDebug")
+    doLast {
+        println "*************** assembleTestChannelsDebug doLast finish... ***************"
+    }
+}
+
+/**
+ * assembleChannelsRelease - 先 assembleRelease, 再加固与打渠道包
+ *
+ * 1，createChannelDir（创建channels文件夹）
+ * 2，backupMappingFile （将mapping文件拷贝到 channels 文件夹）
+ * 3，findBuildTypeApk（找到指定环境 APK 包）
+ * 4，backupBuildTypeApkFile（将新生成的 release apk 文件拷贝到 channels/release 文件夹）
+ * 5，createProjectVersionDir（创建渠道包文件夹）
+ * 6，delete360ChannelDb（删除360加固渠道旧数据）
+ * 7，jiaGuChannel（加固和打渠道包）
+ * 8，filterApk（删除未签名加固包，临时文件）
+ * 9，renameChannelApk（修改渠道包名字）
+ * 10，compressDir（将渠道包打成zip文件）
+ * 11，delReleaseDirFile（删除 release 文件夹文件 清空老数据）
+ */
+task assembleChannelsRelease {
+    dependsOn("assembleFormal_project")
+    doLast {
+        startBale("formal_project")
+    }
+}
+
+//正式环境
+task assembleFormal {
+    dependsOn("assembleFormal_project")
+    doLast {
+        startBale("formal_project")
+    }
+}
+//测试环境
+task assembleTest {
+    dependsOn("assembleT_test_project")
+    doLast {
+        startBale("t_test_project")
+    }
+}
+
+
+/**
+ * assembleChannelsRelease - 先 assembleRelease, 再加固与打渠道包
+ *
+ * 1，createChannelDir（创建channels文件夹）
+ * 2，backupMappingFile （将mapping文件拷贝到 channels 文件夹）
+ * 3，findBuildTypeApk（找到指定环境 APK 包）
+ * 4，backupBuildTypeApkFile（将新生成的 release apk 文件拷贝到 channels/release 文件夹）
+ * 5，createProjectVersionDir（创建渠道包文件夹）
+ * 6，delete360ChannelDb（删除360加固渠道旧数据）
+ * 7，jiaGuChannel（加固和打渠道包）
+ * 8，filterApk（删除未签名加固包，临时文件）
+ * 9，renameChannelApk（修改渠道包名字）
+ * 10，compressDir（将渠道包打成zip文件）
+ * 11，delReleaseDirFile（删除 release 文件夹文件 清空老数据）
+ */
+def startBale(String channel) {
+    File outPathChanelDir = createChannelDir()
+    // backupMappingFile()
+    File buildTypeApkFile = findBuildTypeApk(channel)
+    //运维需求，把打好的包复制到对应目录下。且名字固定
+    upFileNam(buildTypeApkFile, channel)
+    backupBuildTypeApkFile(outPathChanelDir, buildTypeApkFile)
+    File apkOutputDir = createProjectVersionDir(outPathChanelDir, buildTypeApkFile)
+    delete360ChannelDb()
+    jiaGuChannel(buildTypeApkFile, apkOutputDir)
+    filterApk(apkOutputDir)
+    renameChannelApk(apkOutputDir)
+//        compressDir(apkOutputDir)
+    delReleaseDirFile()
+    println "*************** assembleChannelsRelease doLast finish... ***************"
+}
+
+def upFileNam(File soucessFile, String channel) {
+    println '------------------------------------------------------------------------------------------------------------------------------------------------------------------------------'
+    def surroundings = ""
+    if (channel.equals("formal_project")) {
+        surroundings = "releaseApk"
+    } else {
+        surroundings = "debugApk"
+    }
+    File outPathChanelDir = new File("${rootProject.projectDir}" + "/app/build/outputs/apk/", surroundings)
+    println("文件路径:" + outPathChanelDir.getAbsolutePath())
+    deleteFile(outPathChanelDir)
+    if (!outPathChanelDir.mkdirs()) {
+        println '创建文件失败!'
+    }
+    copy {
+        from soucessFile.getPath()
+        into outPathChanelDir.getPath()
+    }
+    File[] files = outPathChanelDir.listFiles()
+    for (int i = 0; i < files.length; i++) {
+        def newFile = new File(outPathChanelDir.getAbsolutePath(), "/xiaodongjia.apk")
+        files[i].renameTo(newFile)
+    }
+    println '------------------------------------------------------------------------------------------------------------------------------------------------------------------------------'
+
+}
+//----------------------------------------------------------------------------------
+
+
+ext {
+
+    //加固/
+    FIRST_JIAGU = false //  首次加固
+
+    JIAGU_ROOT = "${project.rootDir}/360jiagu"
+
+    REINFORCE_JAR = "${JIAGU_ROOT}/jiagu/jiagu.jar" // 360加固助手炸药包
+
+    REINFORCE_NAME = "manager@kidsmos.com" //360加固账号
+
+    REINFORCE_PASSWORD = "chengyun@360" //360加固密码
+
+    KEY_PATH = "${project.rootDir}/xiaodongjia.jks"//密钥路径
+
+    KEY_PASSWORD = "xiaodongjia123" //密钥密码
+
+    ALIAS = "xiaodongjia0" //密钥别名
+
+    ALIAS_PASSWORD = "xiaodongjia123" //别名密码
+
+    WALLE_CHANNELS_CONFIG = "${JIAGU_ROOT}/jiagu/channels"//渠道配置文件
+
+    IN_APK_PATH = "${project.projectDir}/formal_project/release/formal_project-release-v2.1.1-2020-07-20.apk"
+// 需要加固的apk的输入路径
+
+    OUT_APK_PATH = "${JIAGU_ROOT}/release"// 加固后多渠道apk输出路径
+
+    CHANNEL_APKS_PATH = "${OUT_APK_PATH}"//渠道Apk输出路径
+
+}
+/**
+ * 360加固 + 多渠道打包
+ */
+task assembleRelease360jiagu() {
+    group '360reinforce'
+    dependsOn("assembleFormal_project")
+
+    doLast {
+        //cleanTargetFiles(CHANNEL_APKS_PATH)   //清空上一次生成的渠道包
+
+        // 360加固多渠道
+        reinforceApk()
+    }
+}
+
+/**
+ * 加固 + 多渠道
+ */
+def reinforceApk() {
+
+    println "--- 360 reinforceApk start! ---"
+
+    println "reinforce apk: ${IN_APK_PATH}"
+
+    exec {
+
+        println "reinforce apk login by : ${REINFORCE_NAME}"
+        // 登录
+        commandLine "powershell", "-c", "java -jar ${REINFORCE_JAR} -login ${REINFORCE_NAME} ${REINFORCE_PASSWORD}"
+
+        // 需要先上传sign文件、渠道文件
+        if (project.ext.FIRST_JIAGU) {
+
+            println "reinforce import sign file : ${KEY_PATH}"
+            //sign 文件
+            commandLine "baspowershellh", "-c", "java -jar ${REINFORCE_JAR} -importsign ${KEY_PATH} ${KEY_PASSWORD}" +
+                    " ${ALIAS} ${ALIAS_PASSWORD}"
+
+
+            println "reinforce import channels file : ${WALLE_CHANNELS_CONFIG}"
+            // 渠道文件
+            commandLine "powershell", "-c", "java -jar ${REINFORCE_JAR} -importmulpkg ${WALLE_CHANNELS_CONFIG}"
+        }
+
+        // 签名信息
+        commandLine "powershell", "-c", "java -jar ${REINFORCE_JAR} -showsign"
+
+
+        println "reinforce 开始加固、多渠道打包"
+        // 加固apk 多渠道
+        commandLine "powershell", "-c", "java -jar ${REINFORCE_JAR} -jiagu ${IN_APK_PATH} ${OUT_APK_PATH} -autosign -automulpkg"
+
+    }
+}

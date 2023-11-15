@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.aries.ui.view.radius.RadiusRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:rv_topLeftRadius="@dimen/dp_20"
+    app:rv_topRightRadius="@dimen/dp_20">
+
+    <TextView
+        android:id="@+id/tv_diaTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/dp_21"
+        android:text="@string/支付方式"
+        android:textColor="@color/color_ff171b20"
+        android:textSize="@dimen/sp_18" />
+
+    <ImageView
+        android:id="@+id/iv_close"
+        android:layout_width="@dimen/dp_16"
+        android:layout_height="@dimen/dp_16"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="@dimen/dp_26"
+        android:layout_marginEnd="@dimen/dp_20"
+        android:src="@mipmap/ic_dialog_close" />
+
+    <RelativeLayout
+        android:id="@+id/rl_payMethod"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_diaTitle"
+        android:layout_marginTop="@dimen/dp_13"
+        android:background="@color/white_bg">
+
+        <LinearLayout
+            android:id="@+id/ll_payMethod"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_wx"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/dp_56"
+                android:layout_marginStart="@dimen/dp_16"
+                android:drawableStart="@mipmap/ic_wx"
+                android:drawablePadding="@dimen/dp_12"
+                android:gravity="center"
+                android:text="@string/微信支付"
+                android:textColor="@color/black"
+                android:textSize="@dimen/sp_16" />
+
+            <TextView
+                android:id="@+id/tv_aliPay"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/dp_56"
+                android:layout_marginStart="@dimen/dp_16"
+                android:drawableStart="@mipmap/ic_alipay"
+                android:drawablePadding="@dimen/dp_12"
+                android:gravity="center"
+                android:text="@string/支付宝支付"
+                android:textColor="@color/black"
+                android:textSize="@dimen/sp_16"
+                android:visibility="gone" />
+        </LinearLayout>
+
+        <RadioGroup
+            android:id="@+id/rg_payMethod"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/dp_112"
+            android:layout_alignTop="@+id/ll_payMethod"
+            android:layout_alignBottom="@+id/ll_payMethod"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="@dimen/dp_16"
+            android:orientation="vertical">
+
+            <RadioButton
+                android:id="@+id/rb_plus"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/dp_0"
+                android:layout_weight="1"
+                android:button="@drawable/selector_pay_method"
+                android:checked="true"
+                android:visibility="gone" />
+
+            <RadioButton
+                android:id="@+id/rb_wx"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/dp_0"
+                android:layout_weight="1"
+                android:button="@drawable/selector_pay_method"
+                android:checked="true" />
+
+            <RadioButton
+                android:id="@+id/rb_aliPay"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/dp_0"
+                android:layout_weight="1"
+                android:button="@drawable/selector_pay_method"
+                android:visibility="gone" />
+        </RadioGroup>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ll_payMethod"
+            android:layout_marginStart="@dimen/dp_30"
+            android:layout_marginTop="@dimen/dp_19"
+            android:layout_marginEnd="@dimen/dp_30"
+            android:layout_marginBottom="@dimen/dp_48"
+            app:cardCornerRadius="@dimen/dp_25"
+            app:cardElevation="@dimen/dp_10">
+
+            <TextView
+                android:id="@+id/tv_makeSure"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@drawable/shape_life_circle_countdown"
+                android:gravity="center"
+                android:text="确认支付0.00"
+                android:textColor="@color/color_ff221503"
+                android:textSize="@dimen/sp_18" />
+        </androidx.cardview.widget.CardView>
+    </RelativeLayout>
+</com.aries.ui.view.radius.RadiusRelativeLayout>

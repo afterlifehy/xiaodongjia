@@ -1,0 +1,325 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.scwang.smartrefresh.layout.SmartRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/srl_mine"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/color_fff7f9fc"
+            android:paddingBottom="@dimen/dp_30">
+
+            <RelativeLayout
+                android:id="@+id/rl_mineTop"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
+                    android:scaleType="fitXY"
+                    android:src="@mipmap/ic_mine_top_bg" />
+
+                <com.google.android.material.appbar.AppBarLayout
+                    android:id="@+id/abl_toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/transparent"
+                    app:elevation="@dimen/dp_0">
+
+                    <androidx.appcompat.widget.Toolbar
+                        android:id="@+id/toolbar"
+                        android:layout_width="match_parent"
+                        android:layout_height="?attr/actionBarSize"
+                        android:background="@color/transparent"
+                        android:minHeight="?attr/actionBarSize"
+                        android:theme="@style/Theme.AppCompat"
+                        app:layout_collapseMode="pin"
+                        app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+
+                        <ImageView
+                            android:id="@+id/iv_right"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="end"
+                            android:layout_marginEnd="@dimen/dp_12"
+                            android:src="@mipmap/ic_setting_white" />
+
+                    </androidx.appcompat.widget.Toolbar>
+                </com.google.android.material.appbar.AppBarLayout>
+
+                <com.makeramen.roundedimageview.RoundedImageView
+                    android:id="@+id/riv_head"
+                    android:layout_width="@dimen/dp_44"
+                    android:layout_height="@dimen/dp_44"
+                    android:layout_below="@+id/abl_toolbar"
+                    android:layout_marginStart="@dimen/dp_17"
+                    android:layout_marginTop="@dimen/dp_13"
+                    android:adjustViewBounds="true"
+                    android:scaleType="fitXY"
+                    app:riv_corner_radius="@dimen/dp_22"
+                    tools:src="@mipmap/ic_app_logo" />
+
+                <TextView
+                    android:id="@+id/tv_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignTop="@+id/riv_head"
+                    android:layout_marginStart="@dimen/dp_15"
+                    android:layout_toEndOf="@+id/riv_head"
+                    android:textColor="@color/white_txt"
+                    android:textSize="@dimen/sp_18"
+                    android:textStyle="bold"
+                    tools:text="Aiyoo" />
+
+                <TextView
+                    android:id="@+id/tv_id"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignStart="@+id/tv_name"
+                    android:layout_alignBottom="@+id/riv_head"
+                    android:textColor="@color/white_65_color"
+                    android:textSize="@dimen/sp_14"
+                    tools:text="5FD1105FD110" />
+
+                <com.aries.ui.view.radius.RadiusTextView
+                    android:id="@+id/rtv_copy"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/tv_id"
+                    android:layout_marginStart="@dimen/dp_12"
+                    android:layout_toEndOf="@+id/tv_id"
+                    android:paddingStart="@dimen/dp_6"
+                    android:paddingTop="@dimen/dp_2"
+                    android:paddingEnd="@dimen/dp_6"
+                    android:paddingBottom="@dimen/dp_2"
+                    android:text="@string/复制"
+                    android:textColor="@color/white_txt"
+                    android:textSize="@dimen/sp_12"
+                    app:rv_backgroundColor="@color/color_ff4e5269"
+                    app:rv_radius="@dimen/dp_5" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/riv_head"
+                    android:layout_marginTop="@dimen/dp_18"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:id="@+id/ll_direct"
+                        android:layout_width="@dimen/dp_0"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center_horizontal"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/tv_direct"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:includeFontPadding="false"
+                            android:textColor="@color/white_txt"
+                            android:textSize="@dimen/sp_20"
+                            tools:text="128" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/dp_5"
+                            android:includeFontPadding="false"
+                            android:text="@string/直接推荐"
+                            android:textColor="@color/white_txt"
+                            android:textSize="@dimen/sp_12" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/ll_indirect"
+                        android:layout_width="@dimen/dp_0"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center_horizontal"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/tv_indirect"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:includeFontPadding="false"
+                            android:textColor="@color/white_txt"
+                            android:textSize="@dimen/sp_20"
+                            tools:text="128" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/dp_5"
+                            android:includeFontPadding="false"
+                            android:text="@string/间接推荐"
+                            android:textColor="@color/white_txt"
+                            android:textSize="@dimen/sp_12" />
+                    </LinearLayout>
+                </LinearLayout>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rl_plus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/rl_mineTop"
+                android:layout_centerHorizontal="true"
+                android:layout_marginStart="@dimen/dp_16"
+                android:layout_marginTop="@dimen/dp_n50"
+                android:layout_marginEnd="@dimen/dp_16"
+                android:background="@mipmap/ic_dong_plus_bg"
+                android:paddingStart="@dimen/dp_12"
+                android:paddingTop="@dimen/dp_5"
+                android:paddingEnd="@dimen/dp_16">
+
+                <TextView
+                    android:id="@+id/tv_plus"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="@dimen/dp_5"
+                    android:gravity="center"
+                    android:text="@string/plus东家PLUS"
+                    android:textColor="@color/color_ff31251e"
+                    android:textSize="@dimen/sp_16"
+                    app:drawableStartCompat="@mipmap/ic_dong_plus" />
+
+                <TextView
+                    android:id="@+id/tv_balance"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv_plus"
+                    tools:text="¥15899" />
+
+                <com.aries.ui.view.radius.RadiusTextView
+                    android:id="@+id/rtv_recharge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:paddingStart="@dimen/dp_15"
+                    android:paddingTop="@dimen/dp_5"
+                    android:paddingEnd="@dimen/dp_15"
+                    android:paddingBottom="@dimen/dp_5"
+                    android:text="@string/去充值"
+                    android:textColor="@color/color_ffecbd94"
+                    android:textSize="@dimen/sp_14"
+                    app:rv_backgroundColor="@color/color_ff2d282a"
+                    app:rv_radius="@dimen/dp_16" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rl_cardPackage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/rl_plus"
+                android:layout_marginTop="@dimen/dp_24">
+
+                <com.aries.ui.view.radius.RadiusFrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_168"
+                    android:layout_marginStart="@dimen/dp_16"
+                    android:layout_marginEnd="@dimen/dp_16"
+                    app:rv_backgroundColor="@color/white_bg"
+                    app:rv_radius="@dimen/dp_12" />
+
+                <TextView
+                    android:id="@+id/tv_mycardPackage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dp_32"
+                    android:layout_marginTop="@dimen/dp_16"
+                    android:text="@string/电子会员卡"
+                    android:textColor="@color/color_ff050505"
+                    android:textSize="@dimen/sp_16"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_all"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@+id/tv_mycardPackage"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="@dimen/dp_28"
+                    android:drawableEnd="@mipmap/ic_arrow_right_grey"
+                    android:drawablePadding="@dimen/dp_5"
+                    android:text="@string/进入"
+                    android:textColor="@color/color_ff808a96"
+                    android:textSize="@dimen/sp_13" />
+
+                <com.tmall.ultraviewpager.UltraViewPager
+                    android:id="@+id/uvp_cardPackage"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv_mycardPackage"
+                    android:layout_marginTop="@dimen/dp_16"
+                    android:background="@color/transparent" />
+
+                <TextView
+                    android:id="@+id/tv_noCard"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv_mycardPackage"
+                    android:layout_centerHorizontal="true"
+                    android:gravity="center_horizontal"
+                    android:text="@string/暂无卡包"
+                    android:visibility="gone"
+                    app:drawableTopCompat="@mipmap/ic_no_card" />
+
+                <View
+                    android:layout_width="@dimen/dp_16"
+                    android:layout_height="wrap_content"
+                    android:layout_alignTop="@+id/uvp_cardPackage"
+                    android:layout_alignBottom="@+id/uvp_cardPackage"
+                    android:background="@color/color_fff7f9fc" />
+
+                <View
+                    android:layout_width="@dimen/dp_16"
+                    android:layout_height="wrap_content"
+                    android:layout_alignTop="@+id/uvp_cardPackage"
+                    android:layout_alignBottom="@+id/uvp_cardPackage"
+                    android:layout_alignParentEnd="true"
+                    android:background="@color/color_fff7f9fc" />
+            </RelativeLayout>
+
+            <com.aries.ui.view.radius.RadiusLinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/rl_cardPackage"
+                android:layout_marginStart="@dimen/dp_16"
+                android:layout_marginTop="@dimen/dp_24"
+                android:layout_marginEnd="@dimen/dp_16"
+                android:orientation="vertical"
+                android:paddingBottom="@dimen/dp_14"
+                app:rv_backgroundColor="@color/white_bg"
+                app:rv_radius="@dimen/dp_12">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dp_16"
+                    android:layout_marginTop="@dimen/dp_16"
+                    android:text="@string/常用工具"
+                    android:textColor="@color/color_ff050505"
+                    android:textSize="@dimen/sp_16"
+                    android:textStyle="bold" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_tools"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </com.aries.ui.view.radius.RadiusLinearLayout>
+        </RelativeLayout>
+    </androidx.core.widget.NestedScrollView>
+</com.scwang.smartrefresh.layout.SmartRefreshLayout>

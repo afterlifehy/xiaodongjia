@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.makeramen.roundedimageview.RoundedImageView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/riv_participants"
+    android:layout_width="@dimen/sp_24"
+    android:layout_height="@dimen/dp_24"
+    android:layout_marginEnd="@dimen/dp_5"
+    android:adjustViewBounds="true"
+    android:scaleType="fitXY"
+    app:riv_border_color="@color/white_bg"
+    app:riv_border_width="@dimen/dp_1"
+    app:riv_corner_radius="@dimen/dp_12">
+
+</com.makeramen.roundedimageview.RoundedImageView>

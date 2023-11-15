@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.aries.ui.view.radius.RadiusTextView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/dp_10"
+    android:layout_marginEnd="@dimen/dp_10"
+    android:orientation="vertical"
+    android:paddingStart="@dimen/dp_16"
+    android:paddingTop="@dimen/dp_9"
+    android:paddingEnd="@dimen/dp_16"
+    android:paddingBottom="@dimen/dp_9"
+    android:textColor="@color/color_ff707376"
+    android:textSize="@dimen/sp_13"
+    app:rv_backgroundColor="@color/white_bg"
+    app:rv_radius="@dimen/dp_5"
+    tools:text="绿植养成记">
+
+
+</com.aries.ui.view.radius.RadiusTextView>

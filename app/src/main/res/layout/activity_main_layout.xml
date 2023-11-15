@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:id="@+id/fl_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/rl_tab_list"
+        android:layout_marginBottom="@dimen/dp_n25" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rl_tab_list"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_78"
+        android:layout_alignParentBottom="true"
+        android:background="@mipmap/ic_tab_shadow" />
+
+</RelativeLayout>

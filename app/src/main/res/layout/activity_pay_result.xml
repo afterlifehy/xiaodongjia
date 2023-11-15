@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white_bg"
+    android:orientation="vertical">
+
+    <include layout="@layout/layout_comment_toolbar" />
+
+    <ImageView
+        android:id="@+id/iv_payResult"
+        android:layout_width="@dimen/dp_88"
+        android:layout_height="@dimen/dp_88"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/dp_42"
+        android:adjustViewBounds="true"
+        android:scaleType="fitXY"
+        tools:src="@mipmap/ic_pay_success" />
+
+    <TextView
+        android:id="@+id/tv_payResult"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/dp_16"
+        android:textColor="@color/color_ff171b20"
+        android:textSize="@dimen/sp_24"
+        tools:text="@string/支付成功" />
+
+    <TextView
+        android:id="@+id/tv_payTips"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/dp_12"
+        android:textColor="@color/color_ff808a96"
+        android:textSize="@dimen/sp_16"
+        tools:text="恭喜！本次充值成功" />
+
+    <TextView
+        android:id="@+id/tv_operate"
+        android:layout_width="@dimen/dp_184"
+        android:layout_height="@dimen/dp_40"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/dp_105"
+        android:background="@drawable/shape_life_circle_countdown"
+        android:gravity="center"
+        android:textColor="@color/color_ff221503"
+        android:textSize="@dimen/sp_17"
+        tools:text="@string/返回商家首页" />
+</LinearLayout>

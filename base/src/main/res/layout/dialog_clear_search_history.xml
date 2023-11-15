@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.aries.ui.view.radius.RadiusLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    app:rv_topLeftRadius="@dimen/dp_18"
+    app:rv_topRightRadius="@dimen/dp_18">
+
+    <com.aries.ui.view.radius.RadiusTextView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_56"
+        android:gravity="center"
+        android:text="@string/确认清空所有历史记录"
+        android:textColor="@color/color_ff808a96"
+        android:textSize="@dimen/sp_14" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_05"
+        android:alpha="0.1"
+        android:background="@color/black" />
+
+    <TextView
+        android:id="@+id/tv_makeSure"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_56"
+        android:gravity="center"
+        android:text="@string/确认清空"
+        android:textColor="@color/color_ffff647c"
+        android:textSize="@dimen/sp_16" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_8"
+        android:background="@color/color_fff7f9fc" />
+
+    <TextView
+        android:id="@+id/tv_cancel"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_56"
+        android:gravity="center"
+        android:text="@string/取消"
+        android:textColor="@color/black"
+        android:textSize="@dimen/sp_16" />
+</com.aries.ui.view.radius.RadiusLinearLayout>

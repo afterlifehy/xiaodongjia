@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.scwang.smartrefresh.layout.SmartRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/srl_bill"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_fff2f4f7">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_bill"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+</com.scwang.smartrefresh.layout.SmartRefreshLayout>

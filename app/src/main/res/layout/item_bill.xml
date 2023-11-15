@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.aries.ui.view.radius.RadiusLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rll_bill"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="@dimen/dp_16"
+    android:layout_marginTop="@dimen/dp_13"
+    android:layout_marginEnd="@dimen/dp_16"
+    android:orientation="vertical"
+    app:rv_backgroundColor="@color/white_bg"
+    app:rv_radius="@dimen/dp_12">
+
+    <com.aries.ui.view.radius.RadiusRelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_50"
+        android:paddingStart="@dimen/dp_12"
+        android:paddingEnd="@dimen/dp_12"
+        app:rv_topLeftRadius="@dimen/dp_12"
+        app:rv_topRightRadius="@dimen/dp_12">
+
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:id="@+id/riv_shopLogo"
+            android:layout_width="@dimen/dp_24"
+            android:layout_height="@dimen/dp_24"
+            android:layout_centerVertical="true"
+            android:scaleType="fitXY"
+            tools:src="@mipmap/ic_alien"
+            app:riv_corner_radius="@dimen/dp_12" />
+
+        <TextView
+            android:id="@+id/tv_shopName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="@dimen/dp_8"
+            android:layout_marginEnd="@dimen/dp_10"
+            android:layout_toStartOf="@+id/tv_paymentStatus"
+            android:layout_toEndOf="@+id/riv_shopLogo"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textColor="@color/black"
+            android:textSize="@dimen/sp_16"
+            tools:text="飞河地：FIERTE（水街店）" />
+
+        <TextView
+            android:id="@+id/tv_paymentStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:textColor="@color/color_ff808a96"
+            android:textSize="@dimen/sp_14"
+            tools:text="已支付" />
+    </com.aries.ui.view.radius.RadiusRelativeLayout>
+
+    <com.aries.ui.view.radius.RadiusRelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="@dimen/dp_16"
+        android:paddingTop="@dimen/dp_5"
+        android:paddingEnd="@dimen/dp_12"
+        android:paddingBottom="@dimen/dp_16"
+        app:rv_bottomLeftRadius="@dimen/dp_12"
+        app:rv_bottomRightRadius="@dimen/dp_12">
+
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:id="@+id/riv_goodsLogo"
+            android:layout_width="@dimen/dp_55"
+            android:layout_height="@dimen/dp_55"
+            android:adjustViewBounds="true"
+            android:scaleType="fitXY"
+            tools:src="@mipmap/ic_alien"
+            app:riv_corner_radius="@dimen/dp_8" />
+
+        <TextView
+            android:id="@+id/tv_orderSn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/riv_goodsLogo"
+            android:layout_marginStart="@dimen/dp_12"
+            android:layout_toEndOf="@+id/riv_goodsLogo"
+            android:includeFontPadding="false"
+            android:maxLines="1"
+            android:textColor="@color/black"
+            android:textSize="@dimen/sp_14"
+            tools:text="订单号：SPO000001878976l" />
+
+        <TextView
+            android:id="@+id/tv_paymentMethod"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_orderSn"
+            android:layout_alignStart="@+id/tv_orderSn"
+            android:layout_marginTop="@dimen/dp_10"
+            android:includeFontPadding="false"
+            android:maxLines="1"
+            android:textColor="@color/color_ff808a96"
+            android:textSize="@dimen/sp_12"
+            tools:text="付款方式：PLUS支付" />
+
+        <TextView
+            android:id="@+id/tv_paymentTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_paymentMethod"
+            android:layout_alignStart="@+id/tv_paymentMethod"
+            android:layout_marginTop="@dimen/dp_10"
+            android:includeFontPadding="false"
+            android:textColor="@color/color_ff808a96"
+            android:textSize="@dimen/sp_12"
+            tools:text="付款时间：2021-01-01 17:59" />
+
+        <TextView
+            android:id="@+id/tv_paymentAmount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_paymentTime"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="@dimen/dp_13"
+            android:textColor="@color/color_ff171b20"
+            android:textSize="@dimen/sp_16"
+            tools:text="¥ 352.00" />
+    </com.aries.ui.view.radius.RadiusRelativeLayout>
+</com.aries.ui.view.radius.RadiusLinearLayout>

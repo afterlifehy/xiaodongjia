@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/layerlist_download_pb"
+        android:bottom="@dimen/dp_5"
+        android:drawable="@drawable/shape_download_pb_bg"
+        android:top="@dimen/dp_5" />
+    <item
+        android:id="@android:id/progress"
+        android:bottom="@dimen/dp_5"
+        android:top="@dimen/dp_5">
+        <scale
+            android:drawable="@drawable/shape_download_pb_progress"
+            android:scaleWidth="100%" />
+    </item>
+</layer-list>

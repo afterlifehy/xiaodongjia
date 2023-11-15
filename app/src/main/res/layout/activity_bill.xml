@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/layout_comment_toolbar" />
+
+    <com.wbb.base.view.flycotablayout.SlidingTabLayout
+        android:id="@+id/stl_bill"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_52"
+        android:layout_marginStart="@dimen/dp_14"
+        android:layout_marginEnd="@dimen/dp_14"
+        android:visibility="gone"
+        app:tl_iconVisible="false"
+        app:tl_indicator_color="@color/color_fffdc631"
+        app:tl_indicator_corner_radius="@dimen/dp_2"
+        app:tl_indicator_height="@dimen/dp_3"
+        app:tl_indicator_margin_top="@dimen/dp_12"
+        app:tl_indicator_width="@dimen/dp_40"
+        app:tl_tab_space_equal="false"
+        app:tl_textSelectColor="@color/color_ff171b20"
+        app:tl_textUnselectColor="@color/color_ff808a96"
+        app:tl_textsize="@dimen/sp_12" />
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/vp_bill"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white" />
+</LinearLayout>

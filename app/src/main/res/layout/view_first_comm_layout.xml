@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/ll_content"
+    android:layout_width="match_parent"
+    android:layout_height="64dp">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv_countDown"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginRight="5dp"
+        android:layout_marginBottom="5dp"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="3dp"
+        app:cardMaxElevation="5dp">
+
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:id="@+id/rl_img"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY"
+            android:src="@mipmap/home_title_bg"
+            android:visibility="visible"
+            app:riv_corner_radius="12dp" />
+
+    </androidx.cardview.widget.CardView>
+
+</FrameLayout>

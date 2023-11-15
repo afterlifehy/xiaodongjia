@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.aries.ui.view.radius.RadiusRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rrl_cardPackage"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/dp_90"
+    android:layout_marginTop="@dimen/dp_20"
+    android:orientation="vertical"
+    android:paddingStart="@dimen/dp_16"
+    android:paddingEnd="@dimen/dp_16"
+    app:rv_radius="@dimen/dp_12">
+
+    <com.makeramen.roundedimageview.RoundedImageView
+        android:id="@+id/riv_cardBg"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:adjustViewBounds="true"
+        android:scaleType="fitXY"
+        android:src="@mipmap/ic_alien"
+        app:riv_corner_radius="@dimen/dp_12" />
+
+    <com.makeramen.roundedimageview.RoundedImageView
+        android:id="@+id/riv_cardLogo"
+        android:layout_width="@dimen/dp_40"
+        android:layout_height="@dimen/dp_40"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="@dimen/dp_16"
+        android:adjustViewBounds="true"
+        android:scaleType="fitXY"
+        android:src="@mipmap/ic_women"
+        app:riv_corner_radius="@dimen/dp_20" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="@dimen/dp_12"
+        android:layout_toStartOf="@+id/ll_balance"
+        android:layout_toEndOf="@+id/riv_cardLogo"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_cardName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:lineSpacingExtra="@dimen/dp_0"
+            android:textColor="@color/white_txt"
+            android:textSize="@dimen/sp_18"
+            tools:text="麦当劳会员麦当劳会员麦当劳会员麦当劳会员" />
+
+        <TextView
+            android:id="@+id/tv_distance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_4"
+            android:textColor="@color/white_txt"
+            android:textSize="@dimen/sp_14"
+            tools:text="175米" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_balance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:layout_marginEnd="@dimen/dp_24"
+        android:gravity="end"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/余额"
+            android:textColor="@color/white_txt"
+            android:textSize="@dimen/sp_14" />
+
+        <TextView
+            android:id="@+id/tv_balance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white_txt"
+            android:textSize="@dimen/sp_16"
+            android:textStyle="bold"
+            tools:text="¥388.00" />
+    </LinearLayout>
+</com.aries.ui.view.radius.RadiusRelativeLayout>

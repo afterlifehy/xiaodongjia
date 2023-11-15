@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/ll_content"
+    android:layout_width="match_parent"
+    android:layout_height="237dp">
+
+    <!--    <androidx.cardview.widget.CardView-->
+    <!--        android:id="@+id/cv_countDown"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="match_parent"-->
+    <!--        android:layout_marginRight="5dp"-->
+    <!--        android:layout_marginBottom="5dp"-->
+    <!--        app:cardCornerRadius="12dp"-->
+    <!--        app:cardElevation="3dp"-->
+    <!--        app:cardMaxElevation="5dp">-->
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center">
+
+
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:id="@+id/rl_mat_bg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@mipmap/home_sj_default_bg"
+            android:scaleType="center"
+            android:visibility="visible"
+            app:riv_corner_radius="12dp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="61dp"
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/shape_class_shadow" />
+
+        <TextView
+            android:id="@+id/is_activity"
+            android:layout_width="70dp"
+            android:layout_height="20dp"
+            android:background="@drawable/merchant_tag_bg"
+            android:gravity="center"
+            android:text="东家招募中"
+            android:textColor="@color/color_462800"
+            android:textSize="12sp"
+            android:visibility="gone" />
+
+        <TextView
+
+            android:id="@+id/tv_distance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/att_disttance_bg"
+            android:padding="3dp"
+            android:text="1km"
+            android:textColor="@color/white"
+            android:textSize="12sp"
+            android:visibility="visible" />
+
+        <CheckBox
+            android:id="@+id/cb_is_favorites"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="5dp"
+            android:button="@drawable/favorites_check_bg"
+            android:checked="true" />
+
+
+        <TextView
+            android:id="@+id/tv_mt_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="30dp"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:text="韩珍源韩国料理"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+
+
+        <com.wbb.base.wiget.labels.LabelsView
+            android:id="@+id/ll_libs"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="3dp"
+            android:layout_marginBottom="10dp"
+            android:minHeight="40dp"
+            app:labelTextColor="@color/white"
+            app:labelTextPaddingBottom="1dp"
+            app:labelTextPaddingLeft="3dp"
+            app:labelTextPaddingRight="3dp"
+            app:labelTextPaddingTop="1dp"
+            app:labelTextSize="12sp"
+            app:maxLines="1"
+            app:selectType="NONE"
+            app:wordMargin="1dp" />
+
+    </RelativeLayout>
+    <!--    </androidx.cardview.widget.CardView>-->
+</FrameLayout>

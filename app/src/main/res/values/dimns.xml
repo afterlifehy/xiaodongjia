@@ -1,0 +1,6 @@
+<resources>
+    <dimen name="list_item_text_size_bigger">14sp</dimen>
+    <dimen name="common_black_big_title_size">18sp</dimen>
+    <dimen name="vide_bom">30dp</dimen>
+    <dimen name="home_nubm_top">0dp</dimen>
+</resources>

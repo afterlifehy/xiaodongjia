@@ -1,0 +1,12 @@
+gradle.ext.exoplayerRoot = settingsDir
+def modulePrefix = ':'
+if (gradle.ext.has('exoplayerModulePrefix')) {
+    modulePrefix += gradle.ext.exoplayerModulePrefix
+}
+
+
+include ':base'
+include ':app'
+rootProject.name = "xiaodongjia"
+
+apply from: 'core_settings.gradle'

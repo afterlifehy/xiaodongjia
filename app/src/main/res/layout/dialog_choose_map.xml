@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.aries.ui.view.radius.RadiusLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    app:rv_backgroundColor="@color/transparent"
+    app:rv_topLeftRadius="@dimen/dp_18"
+    app:rv_topRightRadius="@dimen/dp_18">
+
+    <com.aries.ui.view.radius.RadiusTextView
+        android:id="@+id/rtv_baidu"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_56"
+        android:gravity="center"
+        android:text="@string/百度地图"
+        android:textColor="@color/black"
+        android:textSize="@dimen/sp_16"
+        app:rv_backgroundColor="@color/white_bg"
+        app:rv_topLeftRadius="@dimen/dp_18"
+        app:rv_topRightRadius="@dimen/dp_18" />
+
+    <com.aries.ui.view.radius.RadiusTextView
+        android:id="@+id/rtv_gaode"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_56"
+        android:gravity="center"
+        android:text="@string/高德地图"
+        android:textColor="@color/black"
+        android:textSize="@dimen/sp_16"
+        app:rv_backgroundColor="@color/white_bg" />
+
+    <com.aries.ui.view.radius.RadiusTextView
+        android:id="@+id/rtv_tencent"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_56"
+        android:gravity="center"
+        android:text="@string/腾讯地图"
+        android:textColor="@color/black"
+        android:textSize="@dimen/sp_16"
+        app:rv_backgroundColor="@color/white_bg" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_8"
+        android:background="@color/color_fff7f9fc" />
+
+    <TextView
+        android:id="@+id/tv_cancel"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_56"
+        android:background="@color/white_bg"
+        android:gravity="center"
+        android:text="@string/取消"
+        android:textColor="@color/black"
+        android:textSize="@dimen/sp_16" />
+</com.aries.ui.view.radius.RadiusLinearLayout>

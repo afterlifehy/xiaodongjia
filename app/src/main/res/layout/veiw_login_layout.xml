@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:id="@+id/sc_scroll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fadeScrollbars="true"
+        android:fillViewport="true"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:id="@+id/ll_conent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="353dp"
+                android:scaleType="fitXY"
+                android:src="@mipmap/login_icon" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:text="@string/login"
+                android:textColor="@color/color_171B20"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <com.wbb.xiaodongjia.wiget.LoginInputLayout
+                android:id="@+id/ll_phone_code"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp" />
+
+            <TextView
+                android:id="@+id/tv_login_butt"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="40dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/login_button_bg"
+                android:enabled="false"
+                android:gravity="center"
+                android:text="@string/login"
+                android:textColor="@drawable/login_bt_color"
+                android:textSize="18sp" />
+
+            <LinearLayout
+                android:id="@+id/ll_user_protocol"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <CheckBox
+                    android:id="@+id/cb_chekc"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:button="@drawable/agree"
+                    android:checked="false" />
+
+                <TextView
+                    android:id="@+id/tv_userPolicy"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="3dp"
+                    android:text="@string/login_xy"
+                    android:textColor="@color/color_808A96"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/ys_xy"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/privacy_policy"
+                    android:textColor="@color/color_808A96"
+                    android:textSize="12sp" />
+
+            </LinearLayout>
+
+            <View
+                android:id="@+id/rl_bom"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:orientation="vertical" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

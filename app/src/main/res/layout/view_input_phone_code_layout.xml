@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    android:background="@drawable/input_phone_bg"
+    android:gravity="center_vertical"
+    android:orientation="horizontal">
+
+    <EditText
+        android:id="@+id/et_phone_code"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="3"
+        android:background="@null"
+        android:hint="@string/input_code"
+        android:inputType="number"
+        android:maxLength="4"
+        android:paddingLeft="13dp"
+        android:paddingRight="10dp"
+        android:textCursorDrawable="@drawable/cursor_shape"
+        android:textSize="16sp" />
+
+    <View
+        android:layout_width="0.5dp"
+        android:layout_height="20dp"
+        android:background="#C2C6CC" />
+
+    <TextView
+        android:id="@+id/tv_get_code_button"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1.5"
+        android:enabled="false"
+        android:gravity="center"
+        android:text="@string/get_phone_code"
+        android:textColor="@color/color_B7BEC7"
+        android:textSize="16sp" />
+</LinearLayout>

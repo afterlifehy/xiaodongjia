@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.aries.ui.view.radius.RadiusRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    app:rv_backgroundColor="@color/transparent"
+    app:rv_radius="@dimen/dp_6">
+
+    <com.aries.ui.view.radius.RadiusLinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignBottom="@+id/ll_updateOperate"
+        android:layout_marginTop="@dimen/dp_70"
+        android:layout_marginBottom="@dimen/dp_n25"
+        app:rv_backgroundColor="@color/white_bg"
+        app:rv_radius="@dimen/dp_18" />
+
+    <ImageView
+        android:id="@+id/iv_rocket"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:src="@mipmap/ic_update_rocket" />
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/iv_rocket"
+        android:layout_centerHorizontal="true"
+        android:text="@string/新版本升级"
+        android:textColor="@color/color_ff353535"
+        android:textSize="@dimen/sp_17"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/et_upgradeContent"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_100"
+        android:layout_above="@+id/rtv_upgrade"
+        android:layout_below="@+id/tv_title"
+        android:layout_marginStart="@dimen/dp_28"
+        android:layout_marginTop="@dimen/dp_16"
+        android:layout_marginEnd="@dimen/dp_28"
+        android:background="@null"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:lineSpacingExtra="@dimen/dp_3"
+        android:scrollbars="vertical"
+        android:textColor="@color/color_ff707376"
+        android:textSize="@dimen/sp_13"
+        tools:text="1.解决部分已知bug；\n 2.添加分享功能；\n 3.收费站详情界面改版；" />
+
+    <LinearLayout
+        android:id="@+id/ll_updateOperate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/et_upgradeContent"
+        android:layout_marginStart="@dimen/dp_17"
+        android:layout_marginTop="@dimen/dp_24"
+        android:layout_marginEnd="@dimen/dp_17"
+        android:layout_marginBottom="@dimen/dp_24"
+        android:orientation="horizontal">
+
+        <com.aries.ui.view.radius.RadiusTextView
+            android:id="@+id/rtv_cancel"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/dp_40"
+            android:layout_marginEnd="@dimen/dp_10"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/残忍拒绝"
+            android:textColor="@color/color_ff171b20"
+            android:textSize="@dimen/sp_17"
+            app:rv_backgroundColor="@color/color_fff0f3f7"
+            app:rv_radius="@dimen/dp_20" />
+
+        <TextView
+            android:id="@+id/tv_update"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/dp_40"
+            android:layout_marginStart="@dimen/dp_10"
+            android:layout_weight="1"
+            android:background="@drawable/shape_life_circle_countdown"
+            android:gravity="center"
+            android:text="@string/立即体验"
+            android:textColor="@color/color_ff221503"
+            android:textSize="@dimen/sp_17" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_progress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_title"
+        android:layout_marginTop="@dimen/dp_40"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/dp_80"
+        android:visibility="gone">
+
+        <RelativeLayout
+            android:id="@+id/rl_progress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_20">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/ic_progress_pop" />
+
+            <TextView
+                android:id="@+id/tv_progress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/dp_3"
+                android:textColor="@color/color_ff221503"
+                android:textSize="@dimen/sp_16"
+                tools:text="40%" />
+        </RelativeLayout>
+
+        <SeekBar
+            android:id="@+id/sb_download"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_18"
+            android:layout_marginStart="@dimen/dp_30"
+            android:layout_marginTop="@dimen/dp_14"
+            android:layout_marginEnd="@dimen/dp_30"
+            android:max="100"
+            android:progressDrawable="@drawable/layerlist_download_pb"
+            android:thumb="@mipmap/ic_progress_menu" />
+    </LinearLayout>
+</com.aries.ui.view.radius.RadiusRelativeLayout>

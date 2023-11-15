@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:id="@+id/sc_scroll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fadeScrollbars="true"
+        android:fillViewport="true"
+        android:scrollbars="none">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="350dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="150dp"
+                android:layout_marginRight="20dp">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="269dp"
+                    android:layout_marginTop="60dp"
+                    android:background="@drawable/input_bg"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:text="@string/welcome_to_xdj"
+                        android:textColor="@color/color_F2C394"
+                        android:textSize="24sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:text="@string/want_to_meet_you"
+                        android:textColor="@color/color_F2C394"
+                        android:textSize="16sp" />
+
+                    <EditText
+                        android:id="@+id/et_user_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginRight="20dp"
+                        android:background="@drawable/user_info_input_shape"
+                        android:hint="@string/input_name"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp"
+                        android:textColor="@color/color_CB803C"
+                        android:textColorHint="@color/color_CB803C"
+                        android:textSize="16sp" />
+
+                    <EditText
+                        android:id="@+id/et_recommend_code"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginRight="20dp"
+                        android:background="@drawable/user_info_input_shape"
+                        android:hint="@string/input_yq_code"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp"
+                        android:textColor="@color/color_CB803C"
+                        android:textColorHint="@color/color_CB803C"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="left"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="10dp"
+                        android:text="@string/not_code"
+                        android:textColor="@color/color_665F52"
+                        android:textSize="12sp" />
+
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_width="88dp"
+                    android:layout_height="102dp"
+                    android:layout_marginLeft="20dp"
+                    android:src="@mipmap/inpu_user_info_top" />
+
+                <ImageView
+                    android:layout_width="92dp"
+                    android:layout_height="42dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:src="@mipmap/input_bom" />
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/tv_carry_out"
+                android:layout_width="179dp"
+                android:layout_height="47dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/inpu_cout_bg"
+                android:gravity="center"
+                android:text="@string/carry_out"
+                android:textColor="@color/color_F2C394"
+                android:textSize="18sp" />
+
+            <View
+                android:id="@+id/v_bom_view"
+                android:layout_width="match_parent"
+                android:layout_height="0dp" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

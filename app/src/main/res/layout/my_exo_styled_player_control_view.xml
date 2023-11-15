@@ -1,0 +1,61 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="100dp"
+        android:orientation="vertical">
+
+        <View
+            android:id="@+id/v_top"
+            android:layout_width="match_parent"
+            android:layout_height="5dp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="5dp"
+            android:layout_below="@+id/v_top"
+            android:background="@color/color_ff1b1b27" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:orientation="vertical">
+
+            <View
+                android:layout_width="5dp"
+                android:layout_height="2dp"
+                android:layout_centerVertical="true"
+                android:background="@color/font_dark_gray" />
+
+            <View
+                android:layout_width="5dp"
+                android:layout_height="2dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:background="@color/color_262626" />
+
+            <com.google.android.exoplayer2.ui.DefaultTimeBar
+                android:id="@+id/exo_progress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:bar_height="2dp"
+                app:buffered_color="@color/color_262626"
+                app:played_color="@color/font_dark_gray"
+                app:scrubber_color="@color/font_dark_gray"
+                app:scrubber_disabled_size="8dp"
+                app:scrubber_dragged_size="8dp"
+                app:scrubber_enabled_size="8dp"
+                app:unplayed_color="@color/color_262626" />
+
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

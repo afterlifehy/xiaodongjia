@@ -1,0 +1,25 @@
+-- Merging decision tree log ---
+manifest
+ADDED from G:\androidWork\dome\ExoPlayer-release-v2\library\dash\src\main\AndroidManifest.xml:17:1-64
+INJECTED from G:\androidWork\dome\ExoPlayer-release-v2\library\dash\src\main\AndroidManifest.xml:17:1-64
+INJECTED from G:\androidWork\dome\ExoPlayer-release-v2\library\dash\src\main\AndroidManifest.xml:17:1-64
+	package
+		ADDED from G:\androidWork\dome\ExoPlayer-release-v2\library\dash\src\main\AndroidManifest.xml:17:11-62
+		INJECTED from G:\androidWork\dome\ExoPlayer-release-v2\library\dash\src\main\AndroidManifest.xml
+		INJECTED from G:\androidWork\dome\ExoPlayer-release-v2\library\dash\src\main\AndroidManifest.xml
+	xmlns:android
+		ADDED from G:\androidWork\dome\ExoPlayer-release-v2\library\dash\src\main\AndroidManifest.xml:17:1-64
+uses-sdk
+INJECTED from G:\androidWork\dome\ExoPlayer-release-v2\library\dash\src\main\AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from G:\androidWork\dome\ExoPlayer-release-v2\library\dash\src\main\AndroidManifest.xml
+INJECTED from G:\androidWork\dome\ExoPlayer-release-v2\library\dash\src\main\AndroidManifest.xml
+INJECTED from G:\androidWork\dome\ExoPlayer-release-v2\library\dash\src\main\AndroidManifest.xml
+INJECTED from G:\androidWork\dome\ExoPlayer-release-v2\library\dash\src\main\AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from G:\androidWork\dome\ExoPlayer-release-v2\library\dash\src\main\AndroidManifest.xml
+		ADDED from G:\androidWork\dome\ExoPlayer-release-v2\library\dash\src\main\AndroidManifest.xml
+		INJECTED from G:\androidWork\dome\ExoPlayer-release-v2\library\dash\src\main\AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from G:\androidWork\dome\ExoPlayer-release-v2\library\dash\src\main\AndroidManifest.xml
+		ADDED from G:\androidWork\dome\ExoPlayer-release-v2\library\dash\src\main\AndroidManifest.xml
+		INJECTED from G:\androidWork\dome\ExoPlayer-release-v2\library\dash\src\main\AndroidManifest.xml

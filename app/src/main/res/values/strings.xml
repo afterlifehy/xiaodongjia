@@ -1,0 +1,31 @@
+<resources>
+    <string name="app_name">集你小东家</string>
+    <string name="login">登录</string>
+    <string name="get_phone_code">获取验证码</string>
+    <string name="input_code">请输入验证码</string>
+    <string name="login_xy">我已阅读并同意<font color="#171B20">《集你小东家APP》</font></string>
+    <string name="privacy_policy">及<font color="#171B20">《隐私政策》</font></string>
+    <string name="input_phone">请输入手机号</string>
+    <string name="hoose_country">选择国家</string>
+    <string name="hot">热</string>
+    <string name="all_cous">所有课程</string>
+    <string name="welcome_to_xdj">欢迎来到小东家</string>
+    <string name="want_to_meet_you">想认识你呢</string>
+    <string name="input_name">请输入昵称</string>
+    <string name="input_yq_code">请输入邀请码</string>
+    <string name="not_code">无邀请码请输入0000</string>
+    <string name="carry_out">完成</string>
+    <string name="my_attention">我的关注</string>
+    <string name="input_sq_class">输入商家、分类或商圈</string>
+    <string name="track_selection_title">Select tracks</string>
+    <string name="error_generic">Playback failed</string>
+
+    <string name="error_drm_unsupported_before_api_18">DRM content not supported on API levels below 18</string>
+    <string name="download_start_error_offline_license">Failed to obtain offline license</string>
+    <string name="download_live_unsupported">This demo app does not support downloading live content</string>
+    <string name="download_start_error">Failed to start download</string>
+    <string name="user_protocol_reminder">请你务必审慎阅读，充分理解“用户协议”和“隐私政策”各条款，包括但不限于：
+        为了向你提供即时通讯、内容分享等服务，我们需要手机你的设备信息、操作日志等个人信息。你可以在“设置”中查看、变更个人信息。
+        你可以阅读<font color="#9BC4D6">《集尼小东家APP用户协议》</font>和<font color="#9BC4D6">《隐私政策》</font>
+        了解详细信息。如你同意，请点击“同意”开始接受我们的服务。</string>
+</resources>

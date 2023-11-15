@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ll_class"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingStart="@dimen/dp_16"
+    android:paddingEnd="@dimen/dp_16"
+    android:paddingBottom="@dimen/dp_24">
+
+    <com.aries.ui.view.radius.RadiusRelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:rv_radius="@dimen/dp_12">
+
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:id="@+id/riv_class"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:scaleType="fitXY"
+            app:riv_corner_radius="@dimen/dp_12"
+            tools:src="@mipmap/ic_alien" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_48"
+            android:layout_alignBottom="@+id/riv_class"
+            android:background="@drawable/shape_class_shadow" />
+
+        <com.aries.ui.view.radius.RadiusTextView
+            android:id="@+id/rtv_updateCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="@dimen/dp_8"
+            android:layout_marginEnd="@dimen/dp_8"
+            android:alpha="0.6"
+            android:paddingStart="@dimen/dp_5"
+            android:paddingTop="@dimen/dp_3"
+            android:paddingEnd="@dimen/dp_5"
+            android:paddingBottom="@dimen/dp_3"
+            android:textColor="@color/white_txt"
+            android:textSize="@dimen/sp_12"
+            android:visibility="gone"
+            app:rv_backgroundColor="@color/black"
+            app:rv_radius="@dimen/dp_5"
+            tools:text="合集 | 5条更新" />
+
+        <TextView
+            android:id="@+id/tv_typeLable"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/riv_class"
+            android:layout_marginStart="@dimen/dp_12"
+            android:layout_marginBottom="@dimen/dp_12"
+            android:textColor="@color/white_txt"
+            android:textSize="@dimen/sp_12"
+            android:visibility="gone"
+            tools:text="分类 | 标签" />
+
+        <TextView
+            android:id="@+id/tv_videoCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/riv_class"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="@dimen/dp_12"
+            android:layout_marginBottom="@dimen/dp_12"
+            android:textColor="@color/white_txt"
+            android:textSize="@dimen/sp_12"
+            tools:text="22个视频" />
+    </com.aries.ui.view.radius.RadiusRelativeLayout>
+
+    <TextView
+        android:id="@+id/tv_desc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_10"
+        android:textColor="@color/color_ff171b20"
+        android:textSize="@dimen/sp_16"
+        tools:text="如何突破圈层，小白进阶100问，社区共识对产业共建的重要意义。" />
+</LinearLayout>

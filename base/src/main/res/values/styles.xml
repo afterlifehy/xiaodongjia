@@ -1,0 +1,183 @@
+<resources>
+    <!-- Base application theme. -->
+    <style name="MyAppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/white_bg</item>
+        <item name="colorPrimaryDark">@color/white_bg</item>
+        <item name="colorAccent">@color/white_bg</item>
+        <item name="android:navigationBarColor">@color/white_bg</item>
+        <item name="android:statusBarColor">@color/white_bg</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowEnableSplitTouch">false</item>
+        <item name="android:splitMotionEvents">false</item>
+    </style>
+
+    <style name="ios_dialog_style">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item>
+        <item name="android:backgroundDimEnabled">false</item>
+    </style>
+
+    <declare-styleable name="TopSlidingTabs">
+        <attr name="tstIndicatorColor" format="color" />  <!-- 指示器的颜色 -->
+        <attr name="tstIndicatorHeight" format="dimension" />  <!-- 指示器的高度 -->
+        <attr name="tstIsShowUnderline" format="boolean" /> <!-- 是否显示底部分隔线 -->
+        <attr name="tstUnderlineColor" format="color" />  <!-- 底部分隔线的颜色 -->
+        <attr name="tstUnderlineHeight" format="dimension" />  <!-- 底部分隔线的高度 -->
+        <attr name="tstVerticalPadding" format="dimension" />  <!-- 容器的上下内边距 -->
+        <attr name="tstHorizontalTabMargin" format="dimension" />  <!-- tab选项的左右边距 -->
+        <attr name="tstScrollOffset" format="dimension" />  <!-- 滚动时的偏移量 -->
+        <attr name="tstIsSelectedBold" format="boolean" />  <!-- 选中项是否要加粗 -->
+        <attr name="tstIsSelectedCenter" format="boolean" />  <!-- 选中项是否要居中 -->
+        <attr name="tstSelectedColor" format="color" />  <!-- 选中项的文字的颜色 -->
+        <attr name="tstIsIndicatorFillTab" format="boolean" /> <!-- 指示器是否要充满tab -->
+        <attr name="tstShouldExpand" format="boolean" /> <!-- 选项是否要平分宽度 -->
+        <attr name="tstSelectedTextSize" format="dimension" /> <!-- 选中项文字大小 -->
+        <attr name="tstTabBackgroundSelector" format="reference" /> <!-- 项背景 selector -->
+        <attr name="tstTabLeftRightPadding" format="dimension" /> <!-- tab的左右padding -->
+        <attr name="tstTabTopBottomPadding" format="dimension" /> <!-- tab的上下padding -->
+    </declare-styleable>
+
+    <style name="DaoxilaDialog.Alert" parent="@android:style/Theme.Dialog">
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:background">@mipmap/bg_alert_dialog</item>
+        <item name="android:windowBackground">@mipmap/bg_alert_dialog</item>
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:windowAnimationStyle">@style/AlertDialogAnimation</item>
+    </style>
+
+    <style name="AlertDialogAnimation" parent="@android:style/Animation.Dialog">
+        <item name="android:windowEnterAnimation">@anim/anim_dialog_in_from_bottom</item>
+        <item name="android:windowExitAnimation">@anim/anim_dialog_out_to_bottom</item>
+    </style>
+
+    <style name="alertdialog" parent="@android:style/Theme.Dialog">
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowIsTranslucent">false</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowBackground">@color/transparent</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:backgroundDimAmount">0.6</item>
+    </style>
+
+    <style name="DarkAnimation">
+        <item name="android:windowEnterAnimation">@anim/dark_fade_in</item>
+        <item name="android:windowExitAnimation">@anim/dark_fade_out</item>
+    </style>
+
+    <style name="CommonBottomDialogStyle" parent="@android:style/Theme.Dialog">
+        <item name="colorPrimary">@color/white_bg</item>
+        <item name="colorPrimaryDark">@color/white_bg</item>
+        <item name="colorAccent">@color/black</item>
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowAnimationStyle">@style/CommonBottomDialogAnim</item>
+        <item name="android:windowSoftInputMode">stateVisible|adjustPan</item>
+    </style>
+
+    <style name="CommonBottomDialogAnim" parent="android:Animation">
+        <item name="android:windowEnterAnimation">@anim/anim_dialog_in_from_bottom</item>
+        <item name="android:windowExitAnimation">@anim/anim_dialog_out_to_bottom</item>
+    </style>
+
+    <declare-styleable name="LabelsView">
+        <attr name="selectType" format="enum">
+            <enum name="NONE" value="1" />
+            <enum name="SINGLE" value="2" />
+            <enum name="SINGLE_IRREVOCABLY" value="3" />
+            <enum name="MULTI" value="4" />
+        </attr>
+
+        <attr name="labelGravity">
+            <!-- Push object to the top of its container, not changing its size. -->
+            <flag name="top" value="0x30" />
+            <!-- Push object to the bottom of its container, not changing its size. -->
+            <flag name="bottom" value="0x50" />
+            <!-- Push object to the left of its container, not changing its size. -->
+            <flag name="left" value="0x03" />
+            <!-- Push object to the right of its container, not changing its size. -->
+            <flag name="right" value="0x05" />
+            <!-- Place object in the vertical center of its container, not changing its size. -->
+            <flag name="center_vertical" value="0x10" />
+            <!-- Grow the vertical size of the object if needed so it completely fills its container. -->
+            <flag name="fill_vertical" value="0x70" />
+            <!-- Place object in the horizontal center of its container, not changing its size. -->
+            <flag name="center_horizontal" value="0x01" />
+            <!-- Grow the horizontal size of the object if needed so it completely fills its container. -->
+            <flag name="fill_horizontal" value="0x07" />
+            <!-- Place the object in the center of its container in both the vertical and horizontal axis, not changing its size. -->
+            <flag name="center" value="0x11" />
+            <!-- Grow the horizontal and vertical size of the object if needed so it completely fills its container. -->
+            <flag name="fill" value="0x77" />
+            <!-- Additional option that can be set to have the top and/or bottom edges of
+                 the child clipped to its container's bounds.
+                 The clip will be based on the vertical gravity: a top gravity will clip the bottom
+                 edge, a bottom gravity will clip the top edge, and neither will clip both edges. -->
+            <flag name="clip_vertical" value="0x80" />
+            <!-- Additional option that can be set to have the left and/or right edges of
+                 the child clipped to its container's bounds.
+                 The clip will be based on the horizontal gravity: a left gravity will clip the right
+                 edge, a right gravity will clip the left edge, and neither will clip both edges. -->
+            <flag name="clip_horizontal" value="0x08" />
+            <!-- Push object to the beginning of its container, not changing its size. -->
+            <flag name="start" value="0x00800003" />
+            <!-- Push object to the end of its container, not changing its size. -->
+            <flag name="end" value="0x00800005" />
+        </attr>
+
+        <attr name="maxSelect" format="integer" />
+        <attr name="minSelect" format="integer" />
+        <attr name="maxLines" format="integer" />
+        <attr name="isIndicator" format="boolean" />
+        <attr name="labelTextColor" format="reference|color" />
+        <attr name="labelTextSize" format="dimension" />
+        <attr name="labelTextWidth" format="dimension">
+            <enum name="fill_parent" value="-1" />
+            <enum name="match_parent" value="-1" />
+            <enum name="wrap_content" value="-2" />
+        </attr>
+        <attr name="labelTextHeight" format="dimension">
+            <enum name="fill_parent" value="-1" />
+            <enum name="match_parent" value="-1" />
+            <enum name="wrap_content" value="-2" />
+        </attr>
+        <attr name="labelTextPadding" format="dimension" />
+        <attr name="labelTextPaddingLeft" format="dimension" />
+        <attr name="labelTextPaddingTop" format="dimension" />
+        <attr name="labelTextPaddingRight" format="dimension" />
+        <attr name="labelTextPaddingBottom" format="dimension" />
+        <attr name="lineMargin" format="dimension" />
+        <attr name="wordMargin" format="dimension" />
+        <attr name="labelBackground" format="reference|color" />
+        <attr name="singleLine" format="boolean" />
+        <attr name="isTextBold" format="boolean" />
+    </declare-styleable>
+    <item name="tag_key_data" type="id" />
+    <item name="tag_key_position" type="id" />
+
+    <style name="main_activity_style" parent="AppTheme">
+        <item name="android:windowIsTranslucent">false</item>
+        <item name="android:windowDisablePreview">false</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowBackground">@drawable/layerlist_start_bg</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:background">@null</item>
+    </style>
+</resources>
